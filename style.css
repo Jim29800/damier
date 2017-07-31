@@ -1,0 +1,12 @@
+[class*="col-"] {
+	border: 1px solid;
+  height:100px;
+  
+}
+.black{
+       background:black;
+}
+.white
+{
+       background:white;
+}
