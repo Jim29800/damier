@@ -1,90 +1,27 @@
-var html = "";
-var damier = $("#damier");
+var col = 10;
+var ligne = 10;
 
-//Version 1
-// function colonne1(nbColonne, b){
-//   var colonne = "";
-//   for(var i = 0; i < nbColonne / 2; i++){
-//   colonne += "<div class='col-xs-1 black'></div>";
-//   colonne += "<div class='col-xs-1 white'></div>";
-// }
-// return colonne;
-// }
-// function colonne2(nbColonne){
-//   var colonne = "";
-//   for(var i = 0; i < nbColonne / 2; i++){
-//     colonne += "<div class='col-xs-1 white'></div>";
-//     colonne += "<div class='col-xs-1 black'></div>";
-//   }
-//   return colonne;
-// }
-// function ligne(nbLigne, nbCol ){
-//   var ligne ="";
-//   for(var i = 0; i < nbLigne / 2; i++){
-//     ligne += "<section class='row'>" + colonne1(nbCol) + "</section>";
-//     ligne += "<section class='row'>" + colonne2(nbCol) + "</section>";
-//   }
-//   return ligne;
-// }
-
-
-// html = ligne(10,10);
-// console.log(html);
-
-// damier.html(html);
-
-
-
-//version 2
-function colonne1(nbColonne, b){
-  var colonne = "";
-  var fin = parseInt(nbColonne)  +1 
-
-  if (b === "white"){
-    for(var i = 1  ; i < nbColonne +1 ; i++){
-     if (i%2 == 0) {
-      //pair
-      colonne += "<div class='col-xs-1 black value='"+ i +"'></div>";
-    }
-    else{
-     //impair
-     colonne += "<div class='col-xs-1 white value='"+ i +"'></div>";
-   }
- }
+for (var i = 1; i < ligne + 1; i++) {
+	if (i%2 === 0) {
+		$("#tableau").append("<tr class='line' data-ligne='" + i + "'></tr>");
+	}
+	else{
+		$("#tableau").append("<tr class='underline' data-ligne='" + i + "'></tr>");
+	}
 }
-
-  if (b === "black"){
-    for(var i = 1  ; i < nbColonne +1 ; i++){
-     if (i%2 == 0) {
-      //pair
-      colonne += "<div class='col-xs-1 white value='"+ i +"'></div>";
-    }
-    else{
-     //impair
-     colonne += "<div class='col-xs-1 black value='"+ i +"'></div>";
-   }
- }
+for (var i = 1; i < col + 1; i++) {
+	if (i%2 === 0) {
+		$(".line").append("<td data-col='" + i + "'></td>");
+		$(".underline").append("<td class='black' data-col='" + i + "'></td>");
+	}
+	else{
+		$(".underline").append("<td data-col='" + i + "'></td>");
+		$(".line").append("<td class='black' data-col='" + i + "'></td>");
+	}
 }
-
-return colonne;
-}
-//version 2
-function ligne(nbLigne, nbCol ){
-  var ligne ="";
-  for(var i = 1  ; i < nbLigne +1; i++){
-    if (i%2 == 0) {
-      //pair
-      ligne += "<section class='row' value='"+ i +"'>" + colonne1(nbCol, "white") + "</section>";
-
-    }
-    else{
-     //impair
-     ligne += "<section class='row' value='"+ i +"'>" + colonne1(nbCol, "black") + "</section>";
-   }
- }
- return ligne;
-}
-html = ligne(5,5);
-console.log(html);
-
-damier.html(html);
+// test recup X Y
+$("td").click(function(){
+  var choix2 = $(this).data("col");
+  var choix1 = $(this).parent().data("ligne");
+  alert("Selection : " + "Ligne :" + choix1 + " Colonne :" + choix2)
+})
