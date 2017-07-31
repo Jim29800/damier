@@ -44,7 +44,7 @@ function colonne1(nbColonne, b){
     for(var i = 1  ; i < nbColonne +1 ; i++){
      if (i%2 == 0) {
       //pair
-      colonne += "<div class='col-xs-1 black' value='"+ i +"'></div>";
+      colonne += "<div class='col-xs-1 black value='"+ i +"'></div>";
     }
     else{
      //impair
@@ -57,7 +57,7 @@ function colonne1(nbColonne, b){
     for(var i = 1  ; i < nbColonne +1 ; i++){
      if (i%2 == 0) {
       //pair
-      colonne += "<div class='col-xs-1 white' value='"+ i +"'></div>";
+      colonne += "<div class='col-xs-1 white value='"+ i +"'></div>";
     }
     else{
      //impair
@@ -68,25 +68,23 @@ function colonne1(nbColonne, b){
 
 return colonne;
 }
-
 //version 2
 function ligne(nbLigne, nbCol ){
   var ligne ="";
   for(var i = 1  ; i < nbLigne +1; i++){
     if (i%2 == 0) {
       //pair
-      ligne += "<section class='row'>" + colonne1(nbCol, "white") + "</section>";
+      ligne += "<section class='row' value='"+ i +"'>" + colonne1(nbCol, "white") + "</section>";
 
     }
     else{
      //impair
-     ligne += "<section class='row'>" + colonne1(nbCol, "black") + "</section>";
+     ligne += "<section class='row' value='"+ i +"'>" + colonne1(nbCol, "black") + "</section>";
    }
  }
  return ligne;
 }
-
-html = ligne(2,6);
+html = ligne(5,5);
 console.log(html);
 
 damier.html(html);
